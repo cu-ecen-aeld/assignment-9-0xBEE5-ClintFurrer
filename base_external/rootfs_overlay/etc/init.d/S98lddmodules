@@ -6,6 +6,7 @@ case "$1" in
 start)
 echo "Starting init script for Module Loading"
     cd "$MODULE_DIR" || exit 1
+    /bin/aesdchar_load || exit 1
     /bin/scull_load || exit 1
     /bin/module_load faulty || exit 1
     /bin/module_load hello || exit 1
@@ -13,6 +14,7 @@ echo "Starting init script for Module Loading"
 stop)
 echo "Removing user modules"
     cd "$MODULE_DIR" || exit 1
+    /bin/aesdchar_unload
     /bin/module_unload hello
     /bin/module_unload faulty
     /bin/scull_unload
